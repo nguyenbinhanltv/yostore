@@ -25,10 +25,10 @@
         <button class="btn btn-primary btn-block mt-3"
                 [disabled]="registerForm.invalid || registrationSent"
                 type="submit">
-            Register
+            Đăng ký
         </button>
         <div *ngIf="registrationSent" class="registration-sent">
-            Great! Now check your email ({{ emailAddress }}) to complete registration.
+            Tuyệt! Hãy kiểm tra email ({{ emailAddress }}) của bạn để hoàn tất.
         </div>
     </vsf-centered-card>
 </form>
