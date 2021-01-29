@@ -8,7 +8,7 @@ import { defaultEmailHandlers, EmailPlugin } from "@vendure/email-plugin";
 import { AssetServerPlugin } from "@vendure/asset-server-plugin";
 import { AdminUiPlugin } from "@vendure/admin-ui-plugin";
 import path from "path";
-import { GoogleStorageStrategy } from "vendure-plugin-google-storage-assets";
+import { GoogleStorageStrategy } from "./google-storage-strategy/google-storage-strategy";
 
 export const config: VendureConfig = {
   apiOptions: {
@@ -33,6 +33,7 @@ export const config: VendureConfig = {
     username: process.env.DATABASE_USER,
     password: process.env.DATABASE_PASSWORD,
     host: process.env.DATABASE_HOST,
+    port: (process.env.DATABASE_PORT as unknown) as number,
     database: process.env.DATABASE_NAME,
     migrations: [path.join(__dirname, "../migrations/*.ts")],
   },
@@ -42,10 +43,9 @@ export const config: VendureConfig = {
   customFields: {},
   plugins: [
     AssetServerPlugin.init({
-      storageStrategyFactory: () =>
-        new GoogleStorageStrategy("yo-store"),
+      storageStrategyFactory: () => new GoogleStorageStrategy("yo-store"),
       route: "assets",
-      assetUploadDir: path.join(__dirname, "../static/assets"),
+      assetUploadDir: "/tmp/vendure/assets",
       port: 3001,
     }),
     DefaultJobQueuePlugin,
@@ -68,7 +68,7 @@ export const config: VendureConfig = {
     AdminUiPlugin.init({
       port: 3002,
       app: {
-        path: path.join(__dirname, "dist/__admin-ui"),
+        path: path.join(__dirname, "__admin-ui/dist"),
       },
     }),
   ],
