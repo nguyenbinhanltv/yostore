@@ -8,8 +8,10 @@
     "target": "es2017",
     "strict": true,
     "sourceMap": false,
+    "skipLibCheck": true,
     "outDir": "./dist",
-    "baseUrl": "./"
+    "baseUrl": "./src/"
   },
-  "exclude": ["node_modules", "migration.ts"]
+  "include": ["src"],
+  "exclude": ["node_modules", "migration", "script", "__admin-ui"]
 }
