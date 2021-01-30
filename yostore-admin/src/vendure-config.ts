@@ -83,14 +83,14 @@ export const config: VendureConfig = {
                 logging: true,
                 debug: true,
                 auth: {
-                    user: 'noreply@pinelab.studio',
+                    user: 'noreply@yostore.studio',
                     pass: process.env.YOSTOREMAIL_PASS as string,
                 }
             },
             handlers: shopsMailHandlers,
             templatePath: path.join(__dirname, '../static/email/templates'),
             globalTemplateVars: {
-                fromAddress: '"Webshop" <noreply@pinelab.studio>',
+                fromAddress: '"Webshop" <noreply@yostore.studio>',
             },
         }),
         // Production ready, precompiled admin UI
