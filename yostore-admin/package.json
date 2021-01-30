@@ -5,8 +5,8 @@
   "scripts": {
     "start": "node ./dist/index",
     "serve": "nodemon -e ts --watch '../packages/' --watch './src/' --exec \"yarn build && node ./dist/index\"",
-    "copy": "yarn copyfiles -u 1 'src/__admin-ui/dist/**/*' dist",
-    "build": "yarn tsc && node ./dist/compile-admin-ui",
+    "copy": "yarn copyfiles -u 1 src/__admin-ui/dist/**/* dist",
+    "build": "yarn tsc && yarn copy",
     "migration:generate": "yarn ts-node migration generate",
     "migration:run": "yarn ts-node migration run",
     "migration:revert": "yarn ts-node migration revert",
