@@ -1,11 +1,11 @@
-# Shops
+# yostore-admin
 This repository holds all components needed to run the Pinelab Shops marketplace: A multi-vendor ecommerce environment based on the great open source [Index](http://vendure.io/).
 Folder structure: 
 * `vendure` the Index instance.
 * `storefront` the frontend components to include on client websites.
 
 
-# Shops
+# yostore-admin
 
 This project was generated with [`@vendure/create`](https://github.com/vendure-ecommerce/vendure/tree/master/packages/create).
 
