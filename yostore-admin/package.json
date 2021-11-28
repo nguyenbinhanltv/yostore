@@ -3,40 +3,24 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "start": "node ./dist/index",
-    "serve": "nodemon -e ts --watch '../packages/' --watch './src/' --exec \"yarn build && node ./dist/index\"",
-    "copy": "yarn copyfiles -u 1 src/__admin-ui/dist/**/* dist",
-    "build": "yarn tsc && yarn copy",
-    "migration:generate": "yarn ts-node migration generate",
-    "migration:run": "yarn ts-node migration run",
-    "migration:revert": "yarn ts-node migration revert",
-    "test": "export SHOP_ENV=.env.test && ",
-    "prod": "export SHOP_ENV=.env && "
-  },
-  "resolutions": {
-    "tslib": "1.11.2"
+    "run:server": "ts-node ./src/index.ts",
+    "run:worker": "ts-node ./src/index-worker.ts",
+    "start": "concurrently yarn:run:*",
+    "build": "tsc",
+    "migration:generate": "ts-node migration generate",
+    "migration:run": "ts-node migration run",
+    "migration:revert": "ts-node migration revert"
   },
   "dependencies": {
-    "@mollie/api-client": "^3.2.4",
-    "@types/localtunnel": "^2.0.0",
-    "@types/tmp": "^0.2.0",
-    "@vendure/admin-ui-plugin": "0.18.2",
-    "@vendure/asset-server-plugin": "0.18.2",
-    "@vendure/core": "0.18.2",
-    "@vendure/email-plugin": "0.18.2",
-    "@vendure/ui-devkit": "0.18.2",
-    "copyfiles": "^2.4.1",
-    "fs-capacitor": "^6.2.0",
-    "localtunnel": "^2.0.0",
-    "pg": "^8.5.1",
-    "tmp": "^0.2.1",
-    "typescript": "4.0.3",
-    "vendure-plugin-google-storage-assets": "^0.18.6",
-    "vendure-plugin-public-stock": "^0.18.8",
-    "vendure-plugin-webhook": "^0.18.7"
+    "@vendure/admin-ui-plugin": "1.3.4",
+    "@vendure/asset-server-plugin": "1.3.4",
+    "@vendure/core": "1.3.4",
+    "@vendure/email-plugin": "1.3.4",
+    "pg": "8.7.1",
+    "typescript": "4.3.5"
   },
   "devDependencies": {
-    "nodemon": "^2.0.4",
-    "ts-node": "^9.0.0"
+    "concurrently": "6.4.0",
+    "ts-node": "10.4.0"
   }
 }
